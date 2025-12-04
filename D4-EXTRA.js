@@ -93,20 +93,32 @@ function latestShoppingCart(shoppingCart) {
 
 /* EXTRA 6
  Crea una funzione chiamata "loopUntil" che riceve un numero intero come parametro con valore tra 0 e 9.
- La funzione è composta da un ciclo che stampa un numero casuale tra 0 e 9 finchè il numero casuale non è maggiore di x per tre volte di fila.
+ La funzione è composta da un ciclo che stampa un numero casuale tra 0 e 9 finchè il numero 
+ casuale non è maggiore di x per tre volte di fila.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
 function loopUntil(x) {
   let counterMaggioreX = 0;
-  while (counterMaggioreX <= 3) {
+  let diFila = false;
+  console.log(`NUMERO DATO: ${x}`);
+  while (!diFila) {
     const randX = Math.floor(Math.random() * 10);
-    console.log("Numero casuale: ", randX);
-    console.log("Numero dato: ", x);
+    console.log(`Numero casuale: ${randX}`);
     if (randX > x) {
-      console.log("numero causale è maggior del numero dato");
+      // se la condizione "di fila" soddisfatta, incrementa il contatore
       counterMaggioreX++;
+      console.log(`Numero casuale ${randX} maggiore di numero dato per ${counterMaggioreX} volte di fila`);
+      if (counterMaggioreX === 3) {
+        diFila = true;
+        console.log(`Numero casuale ${randX} maggiore di x per tre volte di fila. Esco dal loop`);
+        break;
+      }
+    } else {
+      console.log(`Numero casuale ${randX} non maggiore di x una volta, quindi non di fila. Azzero contatore`);
+      // se la condizione "di fila" non soddisfatta, azzera il contatore di fila
+      counterMaggioreX = 0;
     }
   }
 }
@@ -179,19 +191,16 @@ function eLiberaDaSpam(emailContent) {
  * dataInput deve essere fornito nel formato YYYY-MM-DD
  */
 function calcolaGiorni(dataInput) {
-    // millisecondi dall'epoch, fino alla data input
-    const msPassati1 = Date.parse(dataInput)
-    // millisecondi dall'epoch, fino alla data di oggi
-    const msPassati2 = Date.parse(new Date().toJSON().slice(0, 10))
-    const msPassati = Math.abs(msPassati1 - msPassati2)
-    // scomposizione di un giorno: ore, minuti, secondi, millisecondi
-    const msInGiorno = 24 * 60 * 60 * 1000
-    const giorniPassati = Math.floor(msPassati / msInGiorno)
-    return giorniPassati
+  // millisecondi dall'epoch, fino alla data input
+  const msPassati1 = Date.parse(dataInput);
+  // millisecondi dall'epoch, fino alla data di oggi
+  const msPassati2 = Date.parse(new Date().toJSON().slice(0, 10));
+  const msPassati = Math.abs(msPassati1 - msPassati2);
+  // scomposizione di un giorno: ore, minuti, secondi, millisecondi
+  const msInGiorno = 24 * 60 * 60 * 1000;
+  const giorniPassati = Math.floor(msPassati / msInGiorno);
+  return giorniPassati;
 }
-
-
-
 
 /* EXTRA 11
  Scrivi una funzione chiamata "matrixGenerator" che riceve come parametri due numeri interi, "x" e "y".
