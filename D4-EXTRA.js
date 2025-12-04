@@ -140,22 +140,19 @@ function average(arr) {
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-
 function longest(arr) {
-    let ultimaStringaRecord = arr[0]
-    let ultimaLunghezzaRecord = ultimaStringaRecord.length
-    for (let i = 1; i < arr.length; i++) {
-        const stringa = arr[i];
-        const lunghezzaStringa = stringa.length
-        if (lunghezzaStringa > ultimaLunghezzaRecord) {
-            ultimaStringaRecord = stringa
-            ultimaLunghezzaRecord = lunghezzaStringa
-        }
+  let ultimaStringaRecord = arr[0];
+  let ultimaLunghezzaRecord = ultimaStringaRecord.length;
+  for (let i = 1; i < arr.length; i++) {
+    const stringa = arr[i];
+    const lunghezzaStringa = stringa.length;
+    if (lunghezzaStringa > ultimaLunghezzaRecord) {
+      ultimaStringaRecord = stringa;
+      ultimaLunghezzaRecord = lunghezzaStringa;
     }
-    return ultimaStringaRecord
+  }
+  return ultimaStringaRecord;
 }
-
-
 
 /* EXTRA 9
  Crea una funzione per creare un filtro anti-spam per la tua casella email. 
@@ -166,12 +163,11 @@ function longest(arr) {
 /* SCRIVI QUI LA TUA RISPOSTA */
 
 function eLiberaDaSpam(emailContent) {
-    const contieneSpam = emailContent.includes("SPAM")
-    const contieneScam = emailContent.includes("SCAM")
-    const condizioneFinale = !contieneScam && !contieneSpam
-    return condizioneFinale
+  const contieneSpam = emailContent.includes("SPAM");
+  const contieneScam = emailContent.includes("SCAM");
+  const condizioneFinale = !contieneScam && !contieneSpam;
+  return condizioneFinale;
 }
-
 
 /* EXTRA 10
  Scrivi una funzione che riceve una data come parametro, e calcola il numero di giorni passati da quella data.
@@ -182,12 +178,12 @@ function eLiberaDaSpam(emailContent) {
 /**
  * dataInput deve essere fornito nel formato YYYY-MM-DD
  */
-function calcolaGiorni(dataInput) {
-    // const dataPrima = dataInput
-    // // data di oggi
-    // const dataDopo = new Date().toJSON().slice(0, 10)
-    // const 
-}
+// function calcolaGiorni(dataInput) {
+//     const dataPrima = dataInput
+//     // data di oggi
+//     const dataDopo = new Date().toJSON().slice(0, 10)
+//     const
+// }
 
 /* EXTRA 11
  Scrivi una funzione chiamata "matrixGenerator" che riceve come parametri due numeri interi, "x" e "y".
@@ -198,3 +194,23 @@ function calcolaGiorni(dataInput) {
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+
+/**
+ * x = columns
+ * y = rows
+ */
+function matrixGenerator(x, y) {
+  const ret = [];
+  //   row
+  for (let i = 0; i < y; i++) {
+    const vals = [];
+    // col
+    for (let j = 0; j < x; j++) {
+      const val = `${i}${j}`;
+      vals.push(val);
+    }
+    ret.push(vals);
+  }
+
+  return ret;
+}
