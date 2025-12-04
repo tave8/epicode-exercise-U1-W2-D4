@@ -178,12 +178,20 @@ function eLiberaDaSpam(emailContent) {
 /**
  * dataInput deve essere fornito nel formato YYYY-MM-DD
  */
-// function calcolaGiorni(dataInput) {
-//     const dataPrima = dataInput
-//     // data di oggi
-//     const dataDopo = new Date().toJSON().slice(0, 10)
-//     const
-// }
+function calcolaGiorni(dataInput) {
+    // millisecondi dall'epoch, fino alla data input
+    const msPassati1 = Date.parse(dataInput)
+    // millisecondi dall'epoch, fino alla data di oggi
+    const msPassati2 = Date.parse(new Date().toJSON().slice(0, 10))
+    const msPassati = Math.abs(msPassati1 - msPassati2)
+    // scomposizione di un giorno: ore, minuti, secondi, millisecondi
+    const msInGiorno = 24 * 60 * 60 * 1000
+    const giorniPassati = Math.floor(msPassati / msInGiorno)
+    return giorniPassati
+}
+
+
+
 
 /* EXTRA 11
  Scrivi una funzione chiamata "matrixGenerator" che riceve come parametri due numeri interi, "x" e "y".
